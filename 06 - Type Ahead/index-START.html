@@ -40,9 +40,6 @@ fetch(endpoint)
 
   function displayMatches(){
     const matches = findMatches(this.value,cities)
-
-    console.log('this is mathces' , matches)
-
     const html = matches.map(match => {
       const regex = new RegExp(this.value,'gi')
       const cityName = match.city.replace(regex,`<span class='hl'>${this.value}</span>`)
