@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hold Shift to Check Multiple Checkboxes</title>
+  <title>My Hold Shift to Check Multiple Checkboxes</title>
 </head>
 <body>
   <style>
@@ -96,6 +96,26 @@
   </div>
 
 <script>
+
+  const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click',check));
+
+  let previous;
+
+  function check(e){
+    let inBetween = false;
+
+    checkboxes.forEach(checkbox =>{
+
+      if(checkbox.checked && e.shiftKey){
+        inBetween = !inBetween
+      }
+      
+      if(inBetween){
+          checkbox.checked = true
+        } 
+    })
+  }
 </script>
 </body>
 </html>
