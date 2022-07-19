@@ -100,21 +100,23 @@
   const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
   checkboxes.forEach(checkbox => checkbox.addEventListener('click',check));
 
-  let previous;
+  let previousCheckbox;
 
   function check(e){
     let inBetween = false;
+    if(e.shiftKey && this.checked){
+      checkboxes.forEach(checkbox =>{
+        if(checkbox === this || checkbox === previousCheckbox){
+          inBetween = !inBetween
+        }
 
-    checkboxes.forEach(checkbox =>{
-
-      if(checkbox.checked && e.shiftKey){
-        inBetween = !inBetween
-      }
-      
-      if(inBetween){
-          checkbox.checked = true
+        if(inBetween){
+            checkbox.checked = true
         } 
-    })
+      })
+    }
+    
+    previousCheckbox = this
   }
 </script>
 </body>
