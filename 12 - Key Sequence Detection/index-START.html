@@ -7,6 +7,21 @@
 </head>
 <body>
 <script>
+
+let log = [];
+let magicPhrase = 'give you up';
+window.addEventListener('keyup',logKey);
+
+function logKey(e){
+  log.push(e.key);
+  log.splice(-magicPhrase.length - 1,log.length - magicPhrase.length);
+  console.log(log);
+
+  if(log.join('').includes(magicPhrase)){
+    cornify_add()
+  }
+}
+
 </script>
 </body>
 </html>
