@@ -6,6 +6,8 @@
 </head>
 <body>
 
+  <h1>check console</h1>
+
   <script>
     // start with strings, numbers and booleans
 
@@ -26,6 +28,16 @@
 
     // So, how do we fix this? We take a copy instead!
 
+        //methods for copying an array 
+
+      players2 = [...players]
+      players3 = Array.from(players)
+      players4 = [].concat(players)
+      players5 = players.slice()
+
+
+      console.log(players3, players3, players4, players5)
+
     // one way
 
     // or create a new array and concat the old one in
@@ -41,6 +53,31 @@
       name: 'Wes Bos',
       age: 80
     };
+
+    const shopsIn = {
+      napa: { 
+        cofee: ['starbucks', 'dolce', 'dutch bros'],
+        clothes: ['adiddas', 'nike', 'lulu']
+      },
+      sanFran: {
+        food: ['hotpot','ramen','sourdough'],
+        candy: ['sees','Ghirardelli']
+      }
+
+    }
+
+        //copying an object 
+
+    const notWes = Object.assign( {}, person, {age:100} ) //creates a shallow copy, any changes to properties deeper than level 1 will change the reference object
+
+    console.log(person)
+    console.log(notWes)
+
+        //poormans deep
+    
+    const noCash = JSON.parse(JSON.stringify(shopsIn))  //deep levels no longer reference original object => deep changes wont modify shopsIn
+    console.log(noCash)
+
 
     // and think we make a copy:
 

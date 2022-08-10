@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Slide on scroll</title>
 </head>
 <body>
 
@@ -56,6 +56,28 @@
         timeout = setTimeout(later, wait);
         if (callNow) func.apply(context, args);
       };
+    }
+
+    window.addEventListener('scroll',debounce(checkSlide));
+    const imgs = document.querySelectorAll('img');
+
+    function checkSlide(){
+      let windowBottom = window.scrollY + window.innerHeight;
+
+      imgs.forEach(img =>{
+        const slideInAt = windowBottom - ( img.height / 2 );
+        const imageBottom = img.offsetTop + img.height;
+        const halfShown = slideInAt > img.offsetTop
+        const isNotScrolledPast = window.scrollY < imageBottom
+
+
+        if(halfShown && isNotScrolledPast){
+          img.classList.add('active')
+        }
+        else{
+          img.classList.remove('active')
+        }
+      })
     }
 
   </script>
